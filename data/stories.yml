@@ -1,0 +1,74 @@
+version: "3.1"
+
+stories:
+- story: Tư vấn và gợi ý sản phẩm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_product_recommendation
+    entities:
+    - product_type: "laptop"
+  - action: action_recommend_products
+  - intent: ask_product_details
+  - action: action_product_details
+  - intent: ask_product_price
+  - action: action_check_price
+  - intent: affirm
+  - action: utter_ask_more_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: Lọc sản phẩm theo tiêu chí và kiểm tra tồn kho
+  steps:
+  - intent: filter_products_by_price
+  - action: action_filter_by_price
+  - intent: filter_products_by_brand
+  - action: action_filter_by_brand
+  - intent: ask_product_availability
+  - action: action_check_availability
+  - intent: thank
+  - action: utter_thank
+  - action: utter_ask_more_help
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Hỏi về chính sách và thông tin liên hệ
+  steps:
+  - intent: ask_shipping
+  - action: utter_shipping
+  - intent: ask_warranty
+  - action: utter_warranty
+  - intent: ask_return_policy
+  - action: utter_return_policy
+  - intent: ask_payment_methods
+  - action: utter_payment_methods
+  - intent: ask_contact_info
+  - action: utter_contact_info
+  - intent: thank
+  - action: utter_thank
+  - action: utter_ask_more_help
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: So sánh sản phẩm và quyết định mua
+  steps:
+  - intent: compare_products
+  - action: action_compare_products
+  - intent: ask_product_recommendation
+  - action: action_recommend_products
+  - intent: affirm
+  - action: utter_ask_more_help
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Kiểm tra đơn hàng
+  steps:
+  - intent: ask_order_status
+  - action: action_check_order_status
+  - intent: ask_shipping
+  - action: utter_shipping
+  - intent: thank
+  - action: utter_thank
+  - action: utter_ask_more_help
+  - intent: goodbye
+  - action: utter_goodbye

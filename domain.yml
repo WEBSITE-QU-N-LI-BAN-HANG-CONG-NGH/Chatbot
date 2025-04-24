@@ -1,0 +1,137 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - thank
+  - affirm
+  - deny
+  - ask_product_recommendation
+  - ask_product_details
+  - ask_product_price
+  - ask_product_availability
+  - ask_categories
+  - filter_products_by_price
+  - filter_products_by_brand
+  - filter_products_by_features
+  - compare_products
+  - ask_popular_products
+  - ask_shipping
+  - ask_warranty
+  - ask_return_policy
+  - ask_payment_methods
+  - ask_order_status
+  - ask_contact_info
+
+entities:
+  - product_type
+  - product_name
+  - brand
+  - price_range
+  - feature
+  - category
+  - min_price
+  - max_price
+  - order_id
+
+slots:
+  product_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: product_type
+  
+  product_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: product_name
+  
+  brand:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: brand
+  
+  price_range:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price_range
+  
+  min_price:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: min_price
+  
+  max_price:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: max_price
+  
+  feature:
+    type: list
+    mappings:
+      - type: from_entity
+        entity: feature
+  
+  category:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: category
+
+responses:
+  utter_greet:
+    - text: "Xin chào! Tôi là trợ lý Tech Shop. Tôi có thể giúp gì cho bạn về các sản phẩm công nghệ của chúng tôi?"
+  
+  utter_goodbye:
+    - text: "Cảm ơn bạn đã liên hệ Tech Shop. Hẹn gặp lại bạn sau!"
+  
+  utter_thank:
+    - text: "Không có gì! Tôi luôn sẵn sàng hỗ trợ bạn."
+  
+  utter_ask_more_help:
+    - text: "Bạn cần hỗ trợ gì thêm không?"
+  
+  utter_default:
+    - text: "Xin lỗi, tôi không hiểu yêu cầu của bạn. Bạn có thể diễn đạt theo cách khác được không?"
+  
+  utter_categories:
+    - text: "Chúng tôi có các danh mục chính sau:\n- **Laptop**\n- **Máy tính bàn**\n- **Điện thoại**\n- **Phụ kiện**\n- **Linh kiện máy tính**\nBạn quan tâm đến danh mục nào?"
+  
+  utter_popular_products:
+    - text: "Đây là những sản phẩm phổ biến nhất hiện nay trong cửa hàng chúng tôi:\n1. **Laptop Acer Swift X14 SFX14**\n2. **MacBook Pro 14 M2 Pro**\n3. **Card màn hình MSI RTX 3060**"
+  
+  utter_shipping:
+    - text: "Tech Shop cung cấp miễn phí giao hàng toàn quốc cho tất cả đơn hàng. Thời gian giao hàng dự kiến từ 2-5 ngày làm việc tùy thuộc vào khu vực của bạn."
+  
+  utter_warranty:
+    - text: "Chúng tôi cung cấp bảo hành 24 tháng cho tất cả sản phẩm chính hãng. Bạn có thể mang sản phẩm đến cửa hàng hoặc gửi về trung tâm bảo hành của chúng tôi."
+  
+  utter_return_policy:
+    - text: "Chúng tôi áp dụng chính sách đổi trả dễ dàng trong 7 ngày đầu tiên sau khi mua hàng, miễn là sản phẩm còn nguyên vẹn và đầy đủ phụ kiện."
+  
+  utter_payment_methods:
+    - text: "Chúng tôi chấp nhận các phương thức thanh toán sau:\n- Thanh toán khi nhận hàng (COD)\n- Thanh toán qua VNPAY"
+  
+  utter_contact_info:
+    - text: "Bạn có thể liên hệ với chúng tôi qua:\n- Hotline: 1900 xxxx\n- Email: support@techshop.com\n- Địa chỉ: 97 Man Thiện, Quận 9, TP. HCM"
+
+actions:
+  - action_recommend_products
+  - action_product_details
+  - action_check_price
+  - action_check_availability
+  - action_filter_by_price
+  - action_filter_by_brand
+  - action_filter_by_features
+  - action_compare_products
+  - action_check_order_status
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,244 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - xin chào
+    - chào bạn
+    - hello
+    - hi
+    - hey
+    - chào buổi sáng
+    - chào buổi chiều
+    - chào buổi tối
+
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - bye
+    - goodbye
+    - hẹn gặp lại
+    - tạm biệt nhé
+    - chào tạm biệt
+
+- intent: thank
+  examples: |
+    - cảm ơn
+    - cảm ơn bạn
+    - thanks
+    - thank you
+    - cảm ơn nhiều
+    - cảm ơn vì đã giúp đỡ
+
+- intent: affirm
+  examples: |
+    - có
+    - đúng
+    - tất nhiên
+    - chính xác
+    - được
+    - ok
+    - đồng ý
+    - vâng
+    - đúng vậy
+    - chắc chắn rồi
+
+- intent: deny
+  examples: |
+    - không
+    - không đúng
+    - không phải vậy
+    - sai rồi
+    - không đồng ý
+    - không được
+    - không bao giờ
+
+- intent: ask_categories
+  examples: |
+    - các loại sản phẩm
+    - danh mục sản phẩm
+    - cửa hàng có những danh mục gì
+    - cho tôi xem danh mục
+    - cửa hàng bán những gì
+    - có bao nhiêu danh mục sản phẩm
+    - liệt kê danh mục
+    - các loại sản phẩm bán ở đây
+
+- intent: ask_product_recommendation
+  examples: |
+    - bạn có thể giới thiệu [laptop](product_type) cho tôi không
+    - tôi muốn mua [điện thoại](product_type) mới
+    - gợi ý cho tôi một [laptop](product_type) tốt
+    - đề xuất [máy tính bàn](product_type) phù hợp với tôi
+    - có [laptop](product_type) nào phù hợp để làm đồ họa không
+    - gợi ý [điện thoại](product_type) tầm giá [8 triệu](price_range)
+    - tôi cần [laptop](product_type) để chơi game
+    - tư vấn cho tôi [laptop](product_type) để lập trình
+    - tôi muốn mua một chiếc [laptop](product_type) để làm việc văn phòng
+    - giới thiệu [điện thoại](product_type) có camera tốt
+    - có [máy tính bảng](product_type) nào phù hợp cho trẻ em
+    - tôi đang tìm [tai nghe](product_type) chống ồn tốt
+    - cần tư vấn mua [bàn phím](product_type) cơ
+    - có [chuột](product_type) gaming nào tốt không
+    - gợi ý cho tôi [màn hình](product_type) 27 inch
+
+- intent: ask_product_details
+  examples: |
+    - thông tin chi tiết về [Acer Swift X14](product_name)
+    - đặc điểm của [MacBook Pro](product_name)
+    - mô tả chi tiết [laptop MSI](product_name)
+    - thông số kỹ thuật [Laptop Acer Swift X14 SFX14 72G 79UW](product_name)
+    - [laptop gaming MSI](product_name) có những tính năng gì
+    - cấu hình của [Laptop](product_type) [Asus](brand)
+    - cho tôi biết chi tiết về [iPhone 15](product_name)
+    - [Samsung Galaxy S24](product_name) có gì đặc biệt
+    - tính năng của [Card màn hình MSI RTX 3060](product_name)
+
+- intent: ask_product_price
+  examples: |
+    - [Acer Swift X14](product_name) giá bao nhiêu
+    - giá của [MacBook Pro 14](product_name)
+    - [laptop Asus](product_name) có giá là bao nhiêu
+    - bao nhiêu tiền một chiếc [iPhone 15](product_name)
+    - cho tôi biết giá [Samsung Galaxy S24](product_name)
+    - [Card màn hình MSI RTX 3060](product_name) bán với giá nào
+    - [laptop](product_type) [Dell](brand) có giá là bao nhiêu
+    - [điện thoại](product_type) [iPhone](brand) bao nhiêu tiền
+
+- intent: ask_product_availability
+  examples: |
+    - [Acer Swift X14](product_name) còn hàng không
+    - [MacBook Pro 14](product_name) có sẵn không
+    - kiểm tra tồn kho [laptop Asus](product_name)
+    - [laptop gaming MSI](product_name) còn hàng không
+    - [Card màn hình MSI RTX 3060](product_name) còn không
+    - còn [laptop](product_type) [Dell](brand) không
+    - [điện thoại](product_type) [iPhone](brand) còn hàng không
+    - khi nào có hàng [Samsung Galaxy S24](product_name)
+
+- intent: filter_products_by_price
+  examples: |
+    - tìm [laptop](product_type) giá dưới [15 triệu](max_price)
+    - [laptop](product_type) từ [15 triệu](min_price) đến [20 triệu](max_price)
+    - [điện thoại](product_type) giá khoảng [8 triệu](price_range)
+    - [máy tính bàn](product_type) trên [20 triệu](min_price)
+    - [laptop](product_type) trong tầm giá [10-15 triệu](price_range)
+    - [màn hình](product_type) giá dưới [5 triệu](max_price)
+    - [tai nghe](product_type) trong khoảng từ [1 triệu](min_price) đến [2 triệu](max_price)
+    - [bàn phím](product_type) không quá [3 triệu](max_price)
+    - [chuột](product_type) giá cao nhất [500 nghìn](max_price)
+
+- intent: filter_products_by_brand
+  examples: |
+    - tìm [laptop](product_type) của [Acer](brand)
+    - [laptop](product_type) hãng [Dell](brand)
+    - [điện thoại](product_type) [Samsung](brand)
+    - [laptop](product_type) thương hiệu [Apple](brand)
+    - [máy tính bàn](product_type) [Asus](brand)
+    - [tai nghe](product_type) của [Sony](brand)
+    - [màn hình](product_type) hãng [LG](brand)
+    - [chuột](product_type) [Logitech](brand)
+    - [bàn phím](product_type) thương hiệu [Corsair](brand)
+
+- intent: filter_products_by_features
+  examples: |
+    - tìm [laptop](product_type) có [RAM 16GB](feature)
+    - [laptop](product_type) với [SSD 512GB](feature)
+    - [điện thoại](product_type) có [camera 108MP](feature)
+    - [laptop](product_type) [màn hình 15.6 inch](feature)
+    - [laptop](product_type) [card đồ họa RTX](feature)
+    - [màn hình](product_type) [144Hz](feature)
+    - [máy tính bàn](product_type) với [CPU Core i7](feature)
+    - [điện thoại](product_type) có [pin 5000mAh](feature)
+    - [tai nghe](product_type) [không dây](feature)
+    - [laptop](product_type) có [cổng HDMI](feature)
+
+- intent: compare_products
+  examples: |
+    - so sánh [Acer Swift X14](product_name) và [MacBook Pro 14](product_name)
+    - [Dell XPS 13](product_name) khác gì so với [HP Spectre](product_name)
+    - điểm khác nhau giữa [iPhone 15](product_name) và [Samsung Galaxy S24](product_name)
+    - so sánh [laptop](product_type) [Acer](brand) và [Asus](brand)
+    - [laptop](product_type) [MSI](brand) tốt hơn [Dell](brand) không
+    - phân biệt [máy tính bàn](product_type) và [laptop](product_type)
+    - so sánh hiệu năng [Card màn hình MSI RTX 3060](product_name) và [Card AMD](product_name)
+
+- intent: ask_popular_products
+  examples: |
+    - sản phẩm nào đang hot
+    - sản phẩm bán chạy nhất
+    - top sản phẩm phổ biến
+    - [laptop](product_type) nào đang được ưa chuộng
+    - [điện thoại](product_type) bán chạy nhất
+    - xu hướng mua [máy tính bàn](product_type) hiện nay
+    - [phụ kiện](product_type) nào đang được yêu thích
+    - sản phẩm nổi bật trong tháng này
+    - [linh kiện](product_type) nào đang là hot trend
+
+- intent: ask_shipping
+  examples: |
+    - phí vận chuyển
+    - giao hàng mất bao lâu
+    - cước phí giao hàng
+    - thời gian giao hàng
+    - vận chuyển đến tỉnh khác
+    - miễn phí giao hàng không
+    - chính sách vận chuyển
+    - giao hàng có tốn phí không
+    - thời gian giao hàng dự kiến
+
+- intent: ask_warranty
+  examples: |
+    - chính sách bảo hành
+    - bảo hành bao lâu
+    - cách thức bảo hành
+    - quy trình bảo hành
+    - điều kiện được bảo hành
+    - bảo hành tại đâu
+    - có bảo hành tại nhà không
+    - [laptop](product_type) được bảo hành bao lâu
+    - [điện thoại](product_type) có bảo hành không
+    - cách thức sử dụng bảo hành
+
+- intent: ask_return_policy
+  examples: |
+    - chính sách đổi trả
+    - có được đổi trả không
+    - thời gian đổi trả
+    - làm sao để đổi trả
+    - điều kiện được đổi trả
+    - quy trình đổi trả
+    - đổi trả mất phí không
+    - hoàn tiền khi đổi trả
+    - tôi muốn đổi sản phẩm
+
+- intent: ask_payment_methods
+  examples: |
+    - phương thức thanh toán
+    - có thanh toán COD không
+    - các cách thanh toán
+    - thanh toán qua VNPAY
+    - có chấp nhận chuyển khoản không
+- intent: ask_order_status
+  examples: |
+    - kiểm tra đơn hàng
+    - theo dõi đơn hàng
+    - tình trạng đơn [ORD123456](order_id)
+    - đơn hàng [ORD789012](order_id) đến đâu rồi
+    - kiểm tra trạng thái đơn hàng
+    - đơn [ORD901234](order_id) bao giờ giao
+    - đơn hàng của tôi thế nào rồi
+    - đơn hàng bị hủy à
+    - làm sao để theo dõi đơn hàng
+
+- intent: ask_contact_info
+  examples: |
+    - thông tin liên hệ
+    - số điện thoại của cửa hàng
+    - email liên hệ
+    - địa chỉ cửa hàng
+    - fanpage của shop
+    - kênh chat hỗ trợ
+    - tổng đài hỗ trợ
+    - tôi có thể liên hệ bằng cách nào
+    - các chi nhánh cửa hàng
