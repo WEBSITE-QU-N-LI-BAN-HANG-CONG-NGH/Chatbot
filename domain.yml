@@ -119,7 +119,7 @@ responses:
     - text: "Chúng tôi chấp nhận các phương thức thanh toán sau:\n- Thanh toán khi nhận hàng (COD)\n- Thanh toán qua VNPAY"
   
   utter_contact_info:
-    - text: "Bạn có thể liên hệ với chúng tôi qua:\n- Hotline: 1900 xxxx\n- Email: support@techshop.com\n- Địa chỉ: 97 Man Thiện, Quận 9, TP. HCM"
+    - text: "Bạn có thể liên hệ với chúng tôi qua:\n- Hotline: 0379641599\n- Email: sangshin0987@gmail.com\n- Địa chỉ: 97 Man Thiện, Quận 9, TP. HCM"
 
 actions:
   - action_recommend_products
