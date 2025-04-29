@@ -19,7 +19,7 @@ def get_product_recommendations(product_type: str, price_range: Optional[str] = 
             params["category"] = product_type
         
         if price_range:
-            # Xử lý price_range từ chuỗi (vd: "5-10 triệu")
+            # khoang gia 
             price_parts = price_range.lower().replace("triệu", "").strip().split("-")
             if len(price_parts) == 2:
                 try:
@@ -44,7 +44,7 @@ def get_product_recommendations(product_type: str, price_range: Optional[str] = 
                 except ValueError:
                     pass
         
-        # Gọi API lấy sản phẩm
+        # call api(take product info)
         response = requests.get(f"{API_BASE_URL}/products", params=params, headers=HEADERS)
         
         if response.status_code == 200:
@@ -75,19 +75,17 @@ def get_product_recommendations(product_type: str, price_range: Optional[str] = 
         return []
 
 def get_product_details_by_name(product_name: str) -> Dict[str, Any]:
-    """
-    Lấy thông tin chi tiết sản phẩm dựa trên tên
-    """
+    # product detail
     try:
-        # Tìm kiếm sản phẩm theo tên
+        # Find product by name
         response = requests.get(f"{API_BASE_URL}/products/search/{product_name}", headers=HEADERS)
         
         if response.status_code == 200:
             products = response.json()
             if products and len(products) > 0:
-                product = products[0]  # Lấy sản phẩm đầu tiên khớp với tên
+                product = products[0]  # First product in list
                 
-                # Format thông tin sản phẩm
+                # Format 
                 return {
                     "id": product.get("id"),
                     "title": product.get("title"),
@@ -114,7 +112,7 @@ def get_product_details_by_type_and_brand(product_type: str, brand: str) -> Dict
     Lấy thông tin chi tiết sản phẩm dựa trên loại và thương hiệu
     """
     try:
-        # Tìm kiếm sản phẩm theo loại và thương hiệu
+        # category and brand
         params = {
             "category": product_type,
             "brand": brand
