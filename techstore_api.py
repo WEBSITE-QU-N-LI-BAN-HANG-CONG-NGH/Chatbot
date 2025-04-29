@@ -5,15 +5,13 @@ import pandas as pd
 from typing import List, Dict, Any, Optional
 
 # Cấu hình kết nối API
-API_BASE_URL = "http://localhost:8080/api/v1"  # Thay đổi thành domain thực tế của bạn
+API_BASE_URL = "http://localhost:8080/api/v1"  #domain
 HEADERS = {
     "Content-Type": "application/json"
-}
+}   #config request api
 
 def get_product_recommendations(product_type: str, price_range: Optional[str] = None, feature: Optional[str] = None) -> List[Dict[str, Any]]:
-    """
-    Lấy danh sách sản phẩm gợi ý dựa trên loại, khoảng giá và tính năng
-    """
+    #loại sp, giá, tính năng    
     try:
         # Xây dựng query params
         params = {}
