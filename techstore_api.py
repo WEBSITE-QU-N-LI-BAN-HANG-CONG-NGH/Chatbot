@@ -52,7 +52,7 @@ def get_product_recommendations(product_type: str, price_range: Optional[str] = 
             
             # Format lại dữ liệu để hiển thị
             results = []
-            for product in products[:5]:  # Lấy tối đa 5 sản phẩm
+            for product in products[:5]:  # max prod = 5
                 results.append({
                     "id": product.get("id"),
                     "title": product.get("title"),
@@ -123,9 +123,9 @@ def get_product_details_by_type_and_brand(product_type: str, brand: str) -> Dict
         if response.status_code == 200:
             products = response.json()
             if products and len(products) > 0:
-                product = products[0]  # Lấy sản phẩm đầu tiên khớp với điều kiện
+                product = products[0]  # first prod in list
                 
-                # Format thông tin sản phẩm (tương tự như hàm get_product_details_by_name)
+                # Format thông tin sản phẩm 
                 return {
                     "id": product.get("id"),
                     "title": product.get("title"),
@@ -184,7 +184,7 @@ def format_price(price) -> str:
     except:
         return str(price)
 
-# Các hàm bổ sung khác
+
 def get_categories() -> List[Dict[str, Any]]:
     """
     Lấy danh sách các danh mục sản phẩm
@@ -236,9 +236,7 @@ def check_product_availability(product_name: str) -> Dict[str, Any]:
     }
 
 def filter_products_by_price(product_type: str, min_price: float = None, max_price: float = None) -> List[Dict[str, Any]]:
-    """
-    Lọc sản phẩm theo khoảng giá
-    """
+    # price range (filter product)
     params = {}
     
     if product_type:
@@ -257,7 +255,7 @@ def filter_products_by_price(product_type: str, min_price: float = None, max_pri
             products = response.json()
             
             results = []
-            for product in products[:5]:  # Lấy tối đa 5 sản phẩm
+            for product in products[:5]:  #max = 5
                 results.append({
                     "id": product.get("id"),
                     "title": product.get("title"),
