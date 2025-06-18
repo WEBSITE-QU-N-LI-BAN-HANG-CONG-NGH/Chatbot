@@ -1,81 +1,27 @@
 version: "3.1"
-
 intents:
   - greet
   - goodbye
-  - thank
-  - affirm
-  - deny
   - search_product
   - ask_product_details
-  - ask_order_status
-  - ask_warranty
-
 entities:
   - product_type
   - product_name
   - brand
   - price_range
-  - feature
-  - order_id
-
 slots:
-  product_type:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: product_type
-  brand:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: brand
-  price_range:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: price_range
-  feature:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: feature
-
+  product_type: { type: text, mappings: [{type: from_entity, entity: product_type}] }
+  brand: { type: text, mappings: [{type: from_entity, entity: brand}] }
+  price_range: { type: text, mappings: [{type: from_entity, entity: price_range}] }
 responses:
   utter_greet:
-    - text: "Xin chào! Tôi là trợ lý Tech Shop. Tôi có thể giúp bạn tìm kiếm sản phẩm hoặc kiểm tra đơn hàng."
+    - text: "Xin chào! Tôi là trợ lý Tech Shop AI. Tôi có thể giúp gì cho bạn?"
   utter_goodbye:
-    - text: "Cảm ơn bạn đã liên hệ. Hẹn gặp lại!"
-  utter_thank:
-    - text: "Không có gì ạ!"
-  utter_now_searching:
-    - text: "Cảm ơn bạn đã cung cấp thông tin. Vui lòng đợi một chút để tôi tìm kiếm nhé."
-  utter_warranty:
-    - text: "Chúng tôi cung cấp bảo hành 24 tháng cho tất cả sản phẩm chính hãng."
-
-  # --- CÁC CÂU HỎI CHO FORM ---
+    - text: "Cảm ơn bạn. Hẹn gặp lại!"
   utter_ask_product_type:
-    - text: "Chắc chắn rồi! Bạn đang muốn tìm sản phẩm thuộc danh mục nào ạ (ví dụ: laptop, điện thoại,...)?"
-  utter_ask_brand:
-    - text: "Bạn có quan tâm đến thương hiệu cụ thể nào không (ví dụ: Dell, Apple, Samsung...)? Nếu không, bạn có thể nói 'bỏ qua'."
-  utter_ask_price_range:
-    - text: "Bạn muốn tìm sản phẩm trong khoảng giá nào (ví dụ: dưới 20 triệu)? Nếu không, bạn có thể nói 'bỏ qua'."
-
+    - text: "Bạn muốn tìm sản phẩm nào (ví dụ: laptop, điện thoại)?"
+  utter_now_searching:
+    - text: "Vui lòng đợi một chút để tôi tìm kiếm..."
 actions:
-  # --- CẬP NHẬT LẠI DANH SÁCH ACTION ---
-  - validate_product_search_form
-  - action_submit_search_form
+  - action_handle_search
   - action_product_details
-  - action_check_order_status
-
-# --- KHAI BÁO LẠI FORM ---
-forms:
-  product_search_form:
-    required_slots:
-      - product_type
-      - brand
-      - price_range

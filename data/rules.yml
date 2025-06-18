@@ -1,52 +1,18 @@
 version: "3.1"
-
 rules:
 - rule: Chào hỏi
   steps:
   - intent: greet
   - action: utter_greet
-
 - rule: Tạm biệt
   steps:
   - intent: goodbye
   - action: utter_goodbye
-
-- rule: Kích hoạt Form tìm kiếm sản phẩm
-  condition:
-  - active_loop: null
+- rule: Xử lý tìm kiếm sản phẩm
   steps:
   - intent: search_product
-  - action: product_search_form
-  - active_loop: product_search_form
-
-- rule: Submit form khi đang chạy
-  condition:
-  - active_loop: product_search_form
-  steps:
-  - action: product_search_form
-  - active_loop: null
-  - action: action_submit_search_form
-
-- rule: Hủy form khi người dùng từ chối
-  condition:
-  - active_loop: product_search_form
-  steps:
-  - intent: deny
-  - action: utter_goodbye
-  - action: action_deactivate_loop
-  - active_loop: null
-
+  - action: action_handle_search
 - rule: Xử lý hỏi chi tiết sản phẩm
   steps:
   - intent: ask_product_details
   - action: action_product_details
-
-- rule: Xử lý hỏi trạng thái đơn hàng
-  steps:
-  - intent: ask_order_status
-  - action: action_check_order_status
-
-- rule: Xử lý hỏi về bảo hành
-  steps:
-  - intent: ask_warranty
-  - action: utter_warranty
