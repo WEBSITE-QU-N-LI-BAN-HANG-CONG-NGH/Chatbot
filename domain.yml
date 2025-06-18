@@ -4,24 +4,47 @@ intents:
   - goodbye
   - search_product
   - ask_product_details
+  - deny
 entities:
   - product_type
   - product_name
   - brand
   - price_range
 slots:
-  product_type: { type: text, mappings: [{type: from_entity, entity: product_type}] }
-  brand: { type: text, mappings: [{type: from_entity, entity: brand}] }
-  price_range: { type: text, mappings: [{type: from_entity, entity: price_range}] }
+  product_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_type
+  brand:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: brand
+  price_range:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: price_range
 responses:
   utter_greet:
     - text: "Xin chào! Tôi là trợ lý Tech Shop AI. Tôi có thể giúp gì cho bạn?"
   utter_goodbye:
-    - text: "Cảm ơn bạn. Hẹn gặp lại!"
-  utter_ask_product_type:
-    - text: "Bạn muốn tìm sản phẩm nào (ví dụ: laptop, điện thoại)?"
+    - text: "Cảm ơn bạn đã liên hệ. Hẹn gặp lại!"
   utter_now_searching:
-    - text: "Vui lòng đợi một chút để tôi tìm kiếm..."
+    - text: "Cảm ơn bạn. Tôi đang tìm kiếm theo yêu cầu của bạn..."
+  utter_ask_product_type:
+    - text: "Chắc chắn rồi! Bạn đang muốn tìm sản phẩm thuộc danh mục nào ạ (ví dụ: laptop, điện thoại,...)?"
+  utter_ask_price_range:
+    - text: "Bạn muốn tìm sản phẩm trong khoảng giá nào ạ? (ví dụ: 'dưới 20 triệu', 'từ 10-15 triệu'). Nếu không có yêu cầu về giá, bạn có thể nói 'bỏ qua'."
+  utter_ask_brand:
+    - text: "Bạn có yêu cầu về thương hiệu cụ thể nào không? (ví dụ: 'Dell', 'Apple'). Nếu không, bạn có thể nói 'bỏ qua'."
 actions:
-  - action_handle_search
+  - validate_product_search_form
+  - action_submit_search_form
   - action_product_details
+forms:
+  product_search_form:
+    required_slots:
+      - product_type
+      - price_range

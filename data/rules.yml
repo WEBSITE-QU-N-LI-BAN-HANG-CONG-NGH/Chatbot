@@ -1,18 +1,20 @@
 version: "3.1"
 rules:
-- rule: Chào hỏi
-  steps:
-  - intent: greet
-  - action: utter_greet
-- rule: Tạm biệt
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-- rule: Xử lý tìm kiếm sản phẩm
+- rule: Kích hoạt Form khi người dùng muốn tìm kiếm
   steps:
   - intent: search_product
-  - action: action_handle_search
-- rule: Xử lý hỏi chi tiết sản phẩm
+  - action: product_search_form
+  - active_loop: product_search_form
+
+- rule: Submit form khi đang chạy
+  condition:
+  - active_loop: product_search_form
+  steps:
+  - action: product_search_form
+  - active_loop: null
+  - action: action_submit_search_form
+
+- rule: Xử lý khi người dùng hỏi tên sản phẩm cụ thể
   steps:
   - intent: ask_product_details
   - action: action_product_details
