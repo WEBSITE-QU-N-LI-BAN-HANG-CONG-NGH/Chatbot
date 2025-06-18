@@ -14,7 +14,7 @@ CATEGORY_MAP = {
     "máy tính bàn": "desktop-computers", "pc": "desktop-computers",
 }
 
-# --- HÀM XỬ LÝ GIÁ ĐÃ ĐƯỢC VIẾT LẠI HOÀN TOÀN ĐỂ ĐẢM BẢO ĐỘ CHÍNH XÁC ---
+
 def parse_price_range(text: Optional[str]) -> (Optional[float], Optional[float]):
     if not text:
         return None, None
