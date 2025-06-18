@@ -1,0 +1,16 @@
+version: "3.1"
+nlu:
+- lookup: product_type
+  examples: |
+    - laptop
+    - máy tính xách tay
+    - điện thoại
+    - smartphone
+    - máy tính bàn
+    - pc
+    - phụ kiện
+    - tai nghe
+    - bàn phím
+    - chuột
+    - màn hình
+    - sạc dự phòng

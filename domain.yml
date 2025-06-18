@@ -6,11 +6,9 @@ intents:
   - thank
   - affirm
   - deny
-  - search_product  # Gộp tất cả các intent tìm kiếm/lọc vào đây
+  - search_product
   - ask_product_details
-  - ask_product_availability
   - ask_order_status
-  - ask_shipping
   - ask_warranty
 
 entities:
@@ -26,67 +24,55 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: product_type
+    - type: from_entity
+      entity: product_type
   brand:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: brand
+    - type: from_entity
+      entity: brand
   price_range:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: price_range
+    - type: from_entity
+      entity: price_range
   feature:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: feature
-  product_name:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: product_name
-  order_id:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: order_id
+    - type: from_entity
+      entity: feature
 
 responses:
   utter_greet:
-    - text: "Xin chào! Tôi là trợ lý Tech Shop. Tôi có thể giúp bạn tìm kiếm sản phẩm, kiểm tra đơn hàng và các chính sách của cửa hàng."
+    - text: "Xin chào! Tôi là trợ lý Tech Shop. Tôi có thể giúp bạn tìm kiếm sản phẩm hoặc kiểm tra đơn hàng."
   utter_goodbye:
     - text: "Cảm ơn bạn đã liên hệ. Hẹn gặp lại!"
   utter_thank:
-    - text: "Không có gì ạ. Tôi có thể giúp gì thêm cho bạn không?"
-  utter_shipping:
-    - text: "Tech Shop miễn phí giao hàng toàn quốc cho tất cả đơn hàng. Thời gian giao hàng dự kiến từ 2-5 ngày làm việc."
-  utter_warranty:
-    - text: "Chúng tôi cung cấp bảo hành 24 tháng cho tất cả sản phẩm chính hãng."
+    - text: "Không có gì ạ!"
   utter_now_searching:
     - text: "Cảm ơn bạn đã cung cấp thông tin. Vui lòng đợi một chút để tôi tìm kiếm nhé."
+  utter_warranty:
+    - text: "Chúng tôi cung cấp bảo hành 24 tháng cho tất cả sản phẩm chính hãng."
 
-  # --- Các câu hỏi cho FORM ---
+  # --- CÁC CÂU HỎI CHO FORM ---
   utter_ask_product_type:
     - text: "Chắc chắn rồi! Bạn đang muốn tìm sản phẩm thuộc danh mục nào ạ (ví dụ: laptop, điện thoại,...)?"
   utter_ask_brand:
     - text: "Bạn có quan tâm đến thương hiệu cụ thể nào không (ví dụ: Dell, Apple, Samsung...)? Nếu không, bạn có thể nói 'bỏ qua'."
   utter_ask_price_range:
-    - text: "Bạn muốn tìm sản phẩm trong khoảng giá nào (ví dụ: dưới 10 triệu, từ 15-20 triệu)? Nếu không, bạn có thể nói 'bỏ qua'."
+    - text: "Bạn muốn tìm sản phẩm trong khoảng giá nào (ví dụ: dưới 20 triệu)? Nếu không, bạn có thể nói 'bỏ qua'."
 
 actions:
+  # --- CẬP NHẬT LẠI DANH SÁCH ACTION ---
   - validate_product_search_form
   - action_submit_search_form
   - action_product_details
-  - action_check_availability
   - action_check_order_status
 
+# --- KHAI BÁO LẠI FORM ---
 forms:
   product_search_form:
     required_slots:

@@ -1,73 +1,51 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
     - xin chào
     - chào bạn
     - hello
-    - hi
-
 - intent: goodbye
   examples: |
     - tạm biệt
     - bye
-
 - intent: thank
   examples: |
     - cảm ơn bạn
-
 - intent: affirm
   examples: |
     - có
     - đúng
-    - được
-
 - intent: deny
   examples: |
     - không
-    - không đúng
+    - bỏ qua
 
 - intent: search_product
   examples: |
+    - tôi muốn mua sắm
+    - tư vấn cho tôi
+    - tìm giúp tôi một sản phẩm
     - bạn có thể giới thiệu [laptop](product_type) cho tôi không
     - tôi muốn mua [điện thoại](product_type) mới
     - gợi ý cho tôi một [laptop](product_type) tốt
-    - tôi cần [laptop](product_type) để chơi game
-    - tìm [laptop](product_type) giá dưới [15 triệu](price_range)
-    - [laptop](product_type) từ [15 triệu](price_range) đến [20 triệu](price_range)
+    - tìm [laptop](product_type) giá [dưới 15 triệu](price_range)
+    - [laptop](product_type) [từ 15 đến 20 triệu](price_range)
     - tìm [laptop](product_type) của [Acer](brand)
-    - [điện thoại](product_type) [Samsung](brand)
-    - tìm [laptop](product_type) có [RAM 16GB](feature)
+    - có máy [Asus](brand) không
     - [điện thoại](product_type) [Samsung](brand) giá [dưới 15 triệu](price_range)
-    - tìm cho tôi [laptop gaming](product_name)
-    - tôi muốn một chiếc [laptop dell](product_name)
-    - [màn hình](product_type)
-    - giá [dưới 10 triệu](price_range)
-    - của hãng [dell](brand)
-    - có [card RTX](feature)
 
 - intent: ask_product_details
   examples: |
     - thông tin chi tiết về [Acer Swift X14](product_name)
-    - cho tôi biết chi tiết về [iPhone 15](product_name)
-
-- intent: ask_product_availability
-  examples: |
-    - [Acer Swift X14](product_name) còn hàng không
-    - kiểm tra tồn kho [laptop Asus](product_name)
+    - xem máy [Laptop Acer Nitro 5 Eagle](product_name)
+    - tôi muốn mua [Sạc dự phòng Anker PowerCore III Elite](product_name)
+    - [Laptop ASUS ROG Strix SCAR 17](product_name)
+    - giá của [Laptop HP Spectre x360 14](product_name)
 
 - intent: ask_order_status
   examples: |
-    - kiểm tra đơn hàng
-    - tình trạng đơn [ORD123456](order_id)
-
-- intent: ask_shipping
-  examples: |
-    - phí vận chuyển
-    - giao hàng mất bao lâu
-
+    - kiểm tra đơn hàng [12345](order_id)
 - intent: ask_warranty
   examples: |
     - chính sách bảo hành
-    - bảo hành bao lâu

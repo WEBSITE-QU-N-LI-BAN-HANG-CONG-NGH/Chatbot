@@ -5,6 +5,7 @@ pipeline:
     # split sentence by white space
 
 - name: RegexFeaturizer
+  use_lookup_tables: true 
 
 
 - name: LexicalSyntacticFeaturizer

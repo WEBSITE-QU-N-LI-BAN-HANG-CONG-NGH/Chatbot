@@ -26,18 +26,27 @@ rules:
   - action: product_search_form
   - active_loop: null
   - action: action_submit_search_form
-  - slot_was_set:
-    - product_type: null
-    - brand: null
-    - price_range: null
-    - feature: null
 
-- rule: Trả lời về chính sách bảo hành
+- rule: Hủy form khi người dùng từ chối
+  condition:
+  - active_loop: product_search_form
+  steps:
+  - intent: deny
+  - action: utter_goodbye
+  - action: action_deactivate_loop
+  - active_loop: null
+
+- rule: Xử lý hỏi chi tiết sản phẩm
+  steps:
+  - intent: ask_product_details
+  - action: action_product_details
+
+- rule: Xử lý hỏi trạng thái đơn hàng
+  steps:
+  - intent: ask_order_status
+  - action: action_check_order_status
+
+- rule: Xử lý hỏi về bảo hành
   steps:
   - intent: ask_warranty
   - action: utter_warranty
-
-- rule: Trả lời về chính sách vận chuyển
-  steps:
-  - intent: ask_shipping
-  - action: utter_shipping

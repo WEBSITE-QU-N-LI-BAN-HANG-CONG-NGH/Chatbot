@@ -1,0 +1,21 @@
+version: "3.1"
+nlu:
+- lookup: brand
+  examples: |
+    - Acer
+    - ASUS
+    - Dell
+    - HP
+    - Apple
+    - iPhone
+    - Samsung
+    - MSI
+    - Lenovo
+    - LG
+    - Sony
+    - Anker
+    - Keychron
+    - Logitech
+    - OPPO
+    - Xiaomi
+    - OnePlus
