@@ -28,7 +28,7 @@
         pip install -r requirements.txt
         ```
 
-### Bước 3: Huấn luyện Chatbot
+### Bước 2: Huấn luyện Chatbot
 
 Sau khi cài đặt xong và mỗi khi bạn có thay đổi trong các tệp `.yml` (trong thư mục `data/`), bạn cần huấn luyện lại chatbot.
 
