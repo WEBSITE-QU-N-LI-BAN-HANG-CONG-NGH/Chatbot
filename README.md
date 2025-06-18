@@ -29,15 +29,10 @@
         ```
 
 ### Bước 2: Huấn luyện Chatbot
-
-Sau khi cài đặt xong và mỗi khi bạn có thay đổi trong các tệp `.yml` (trong thư mục `data/`), bạn cần huấn luyện lại chatbot.
-
 * Chạy lệnh sau trong terminal (đã kích hoạt môi trường ảo):
     ```bash
     rasa train
     ```
-    *(Lưu ý: Lệnh này hoạt động khi `domain.yml` nằm ở thư mục gốc. Nếu bạn đặt nó trong `data/`, hãy dùng lệnh `rasa train --domain data/domain.yml --data data`)*
-
 ## 🚀 Hướng dẫn khởi chạy chatbot
 ### **Terminal 1: Khởi động Action Server**
 
@@ -47,8 +42,6 @@ Sau khi cài đặt xong và mỗi khi bạn có thay đổi trong các tệp `.
     ```bash
     rasa run actions
     ```
-* Đảm bảo máy chủ khởi động thành công trên cổng `5055`.
-
 ### **Terminal 2: Khởi động Rasa Server**
 
 * Mở terminal mới, điều hướng đến thư mục dự án **Chatbot**.
