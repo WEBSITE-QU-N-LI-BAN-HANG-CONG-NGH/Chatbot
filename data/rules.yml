@@ -11,88 +11,33 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: Cảm ơn
+- rule: Kích hoạt Form tìm kiếm sản phẩm
+  condition:
+  - active_loop: null
   steps:
-  - intent: thank
-  - action: utter_thank
-  - action: utter_ask_more_help
+  - intent: search_product
+  - action: product_search_form
+  - active_loop: product_search_form
 
-- rule: Hiển thị danh mục sản phẩm
+- rule: Submit form khi đang chạy
+  condition:
+  - active_loop: product_search_form
   steps:
-  - intent: ask_categories
-  - action: utter_categories
+  - action: product_search_form
+  - active_loop: null
+  - action: action_submit_search_form
+  - slot_was_set:
+    - product_type: null
+    - brand: null
+    - price_range: null
+    - feature: null
 
-- rule: Sản phẩm phổ biến
-  steps:
-  - intent: ask_popular_products
-  - action: utter_popular_products
-
-- rule: Thông tin vận chuyển
-  steps:
-  - intent: ask_shipping
-  - action: utter_shipping
-
-- rule: Chính sách bảo hành
+- rule: Trả lời về chính sách bảo hành
   steps:
   - intent: ask_warranty
   - action: utter_warranty
 
-- rule: Chính sách đổi trả
+- rule: Trả lời về chính sách vận chuyển
   steps:
-  - intent: ask_return_policy
-  - action: utter_return_policy
-
-- rule: Phương thức thanh toán
-  steps:
-  - intent: ask_payment_methods
-  - action: utter_payment_methods
-
-- rule: Thông tin liên hệ
-  steps:
-  - intent: ask_contact_info
-  - action: utter_contact_info
-
-- rule: Gợi ý sản phẩm
-  steps:
-  - intent: ask_product_recommendation
-  - action: action_recommend_products
-
-- rule: Kiểm tra chi tiết sản phẩm
-  steps:
-  - intent: ask_product_details
-  - action: action_product_details
-
-- rule: Kiểm tra giá sản phẩm
-  steps:
-  - intent: ask_product_price
-  - action: action_check_price
-
-- rule: Kiểm tra tồn kho
-  steps:
-  - intent: ask_product_availability
-  - action: action_check_availability
-
-- rule: Lọc theo giá
-  steps:
-  - intent: filter_products_by_price
-  - action: action_filter_by_price
-
-- rule: Lọc theo thương hiệu
-  steps:
-  - intent: filter_products_by_brand
-  - action: action_filter_by_brand
-
-- rule: Lọc theo tính năng
-  steps:
-  - intent: filter_products_by_features
-  - action: action_filter_by_features
-
-- rule: So sánh sản phẩm
-  steps:
-  - intent: compare_products
-  - action: action_compare_products
-
-- rule: Kiểm tra trạng thái đơn hàng
-  steps:
-  - intent: ask_order_status
-  - action: action_check_order_status
+  - intent: ask_shipping
+  - action: utter_shipping
