@@ -6,7 +6,7 @@ from rasa_sdk.events import SlotSet
 
 from .techstore_api import search_products, get_product_details_by_id, get_order_status
 
-# Bảng "biên dịch" và suy luận category
+
 CATEGORY_MAP = {
     "điện thoại": "Phone", "iphone": "Phone", "samsung": "Phone", "xiaomi": "Phone", "oppo": "Phone", "oneplus": "Phone",
     "laptop": "Laptop", "máy tính xách tay": "Laptop", "acer": "Laptop", "asus": "Laptop", "dell": "Laptop", "hp": "Laptop", "msi": "Laptop", "lenovo": "Laptop",
@@ -23,25 +23,24 @@ def parse_price_range(text: Optional[str]) -> (Optional[float], Optional[float])
     min_price, max_price = None, None
     
     try:
-        # Chuẩn hóa các đơn vị tiền tệ
+
         multiplier = 1
         if 'triệu' in text or 'tr' in text:
             multiplier = 1000000
         elif 'k' in text:
             multiplier = 1000
 
-        # Tìm tất cả các chuỗi số (có thể có dấu chấm)
-        # và loại bỏ các dấu chấm ngăn cách hàng nghìn trước khi chuyển đổi
+
         numbers = [float(n.replace('.', '')) for n in re.findall(r'[\d\.]+', text)]
         
         if not numbers:
             return None, None
 
-        # Nhân các số tìm được với hệ số (triệu, k)
+
         numbers = [n * multiplier for n in numbers]
         
-        # Xác định khoảng min/max dựa trên từ khóa
-        if "dưới" in text or "tối đa" in text:
+
+        if "dưới" in text or "tối đa" in text or "thấp hơn" in text:
             max_price = numbers[0]
         elif "trên" in text or ("từ" in text and len(numbers) == 1):
             min_price = numbers[0]
@@ -57,7 +56,7 @@ def parse_price_range(text: Optional[str]) -> (Optional[float], Optional[float])
         
     return min_price, max_price
 
-# --- CÁC LỚP ACTION ---
+
 class ValidateProductSearchForm(FormValidationAction):
     def name(self) -> Text: return "validate_product_search_form"
     def validate_brand(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
